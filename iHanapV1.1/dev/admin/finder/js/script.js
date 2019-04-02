@@ -11,6 +11,7 @@ function addRecord() {
     var mp_nativity = $("#add_mp_nativity").val();
     var mp_age = $("#add_mp_age").val();
     var mp_last_seen = $("#add_mp_last_seen").val();
+    var mp_status = $("#add_mp_status").val();
     var mp_gender = $("#add_mp_gender").val();
     var mp_height = $("#add_mp_height").val();
     var mp_weight = $("#add_mp_weight").val();
@@ -27,6 +28,7 @@ function addRecord() {
         mp_nativity: mp_nativity,
         mp_age: mp_age,
         mp_last_seen: mp_last_seen,
+        mp_status: mp_status,
         mp_gender: mp_gender,
         mp_height: mp_height,
         mp_weight: mp_weight
@@ -48,6 +50,7 @@ function addRecord() {
         $("#add_mp_nativity").val("");
         $("#add_mp_age").val("");
         $("#add_mp_last_seen").val("");
+        $("#add_mp_status").val("");
         $("#add_mp_gender").val("");
         $("#add_mp_height").val("");
         $("#add_mp_weight").val("");
@@ -61,6 +64,17 @@ function readRecords() {
     });
 }
 
+/*function readOpenRecords() {
+    $.get("ajax/readOpenRecord.php", {}, function (data, status) {
+        $(".openRecords_content").html(data);
+    });
+}*/
+
+/*function readClosedRecords() {
+    $.get("ajax/readclosedRecord.php", {}, function (data, status) {
+        $(".closedRecords_content").html(data);
+    });
+}*/
 
 function DeleteUser(missing_person_id) {
     var conf = confirm("Are you sure, do you really want to delete User?");
@@ -96,6 +110,7 @@ function GetUserDetails(missing_person_id) {
             $("#update_mp_nativity").val(user.mp_nativity);
             $("#update_mp_age").val(user.mp_age);
             $("#update_mp_last_seen").val(user.mp_last_seen);
+            $("#update_mp_status").val(user.mp_status);
             $("#update_mp_gender").val(user.mp_gender);
             $("#update_mp_height").val(user.mp_height);
             $("#update_mp_weight").val(user.mp_weight);
@@ -117,6 +132,7 @@ function UpdateUserDetails() {
     var mp_nativity = $("#update_mp_nativity").val();
     var mp_age = $("#update_mp_age").val();
     var mp_last_seen = $("#update_mp_last_seen").val();
+    var mp_status = $("#update_mp_status").val();
     var mp_gender = $("#update_mp_gender").val();
     var mp_height = $("#update_mp_height").val();
     var mp_weight = $("#update_mp_weight").val();
@@ -125,6 +141,7 @@ function UpdateUserDetails() {
 
     // Update the details by requesting to the server using ajax
     $.post("ajax/updateUserDetails.php", {
+      missing_person_id : missing_person_id,
       mp_firstname: mp_firstname,
       mp_middlename: mp_middlename,
       mp_lastname: mp_lastname,
@@ -135,6 +152,7 @@ function UpdateUserDetails() {
       mp_nativity: mp_nativity,
       mp_age: mp_age,
       mp_last_seen: mp_last_seen,
+      mp_status: mp_status,
       mp_gender: mp_gender,
       mp_height: mp_height,
       mp_weight: mp_weight

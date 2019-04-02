@@ -15,14 +15,15 @@
         $mp_nativity = $_POST['mp_nativity'];
         $mp_age = $_POST['mp_age'];
         $mp_last_seen = $_POST['mp_last_seen'];
+        $mp_status = $_POST['mp_status'];
         $mp_gender = $_POST['mp_gender'];
         $mp_height = $_POST['mp_weight'];
         $mp_weight = $_POST['mp_weight'];
 
         $query = "INSERT INTO missingpersons(mp_firstname, mp_middlename, mp_lastname, mp_email, mp_house_number,
-          mp_street, mp_city, mp_nativity, mp_age, mp_last_seen, mp_gender, mp_height, mp_weight)
+          mp_street, mp_city, mp_nativity, mp_age, mp_last_seen, mp_status, mp_gender, mp_height, mp_weight)
         VALUES('$mp_firstname', '$mp_middlename', '$mp_lastname', '$mp_email', '$mp_house_number',
-          '$mp_street','$mp_city','$mp_nativity', '$mp_age', '$mp_last_seen', '$mp_gender', '$mp_height',
+          '$mp_street','$mp_city','$mp_nativity', '$mp_age', '$mp_last_seen', '$mp_status', '$mp_gender', '$mp_height',
           '$mp_weight')";
         if (!$result = mysqli_query($con, $query)) {
             exit(mysqli_error($con));

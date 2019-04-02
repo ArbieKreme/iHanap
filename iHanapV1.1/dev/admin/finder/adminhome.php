@@ -7,7 +7,7 @@
               <div class="container">
                   <div class="row">
                       <div class="col-md-12">
-                          <h4>Missing Persons Details</h4>
+                          <h4>All Reports</h4>
                       </div>
                   </div>
                   <div class="row">
@@ -72,7 +72,16 @@
                   <input class="form-control" id="add_mp_last_seen" name="date" placeholder="MM/DD/YYY (Last Seen)" type="text" required/>
                 </div>
 
-                <div class="form-group" style="text-align:left;" for="update_mp_gender">
+                <div class="form-group" style="text-align:left;" for="add_mp_status">
+                  <select id="add_mp_status">
+                   <option value="Open">Open</option>
+                   <option value="In Progress">In Progress</option>
+                   <option value="Resolved">Resolved</option>
+                   <option value="Closed">Closed</option>
+                  </select>
+                </div>
+
+                <div class="form-group" style="text-align:left;" for="add_mp_gender">
                   <select id="add_mp_gender">
                    <option value="">--Gender--</option>
                    <option value="Male">Male</option>
@@ -160,7 +169,22 @@
                   <input class="form-control" id="update_mp_last_seen" name="date" placeholder="MM/DD/YYY (Last Seen)" type="text" required/>
                 </div>
 
+                <div class="form-group" style="text-align:left;" for="update_mp_status">
+                  <select id="update_mp_status">
+                   <option value="Open">Open</option>
+                   <option value="In Progress">In Progress</option>
+                   <option value="Resolved">Resolved</option>
+                   <option value="Closed">Closed</option>
+                  </select>
+                </div>
 
+                <div class="form-group" style="text-align:left;" for="update_mp_gender">
+                  <select id="update_mp_gender">
+                   <option value="">--Gender--</option>
+                   <option value="Male">Male</option>
+                   <option value="Female">Female</option>
+                  </select>
+                </div>
 
                 <div class="form-group">
                     <input type="number" id="update_mp_height" placeholder="Height (cm)" max="100" class="form-control" required/>
@@ -191,20 +215,5 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function(){
-      $('#missing_persons_table').DataTable();
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-      readRecords(); // calling function
-    });
-</script>
 </body>
 </html>

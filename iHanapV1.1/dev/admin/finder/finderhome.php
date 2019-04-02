@@ -42,7 +42,9 @@
 #add_mp_gender{
   color: grey;
 }
-
+#update_mp_gender{
+  color: grey;
+}
 .w3-bar,h1,button
 {font-family: "Montserrat", sans-serif}
 
@@ -100,6 +102,20 @@
   include 'templates/footer.php';
   ?>
 </footer>
-
+<script>
+    $(document).ready(function(){
+      $('#missing_persons_table').DataTable();
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+      readRecords(); // calling function
+    });
+</script>
 </body>
 </html>

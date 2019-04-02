@@ -16,6 +16,7 @@
                  <td>Nativity</td>
                  <td>Age</td>
                  <td>Last Seen</td>
+								 <td>Status</td>
                  <td>Gender</td>
                  <td>Height</td>
                  <td>Weight</td>
@@ -46,6 +47,7 @@
         <td class="td">'.$row["mp_nativity"].'</td>
         <td class="td">'.$row["mp_age"].'</td>
         <td class="td">'.$row["mp_last_seen"].'</td>
+				<td class="td">'.$row["mp_status"].'</td>
         <td class="td">'.$row["mp_gender"].'</td>
         <td class="td">'.$row["mp_height"].'</td>
         <td class="td">'.$row["mp_weight"].'</td>
