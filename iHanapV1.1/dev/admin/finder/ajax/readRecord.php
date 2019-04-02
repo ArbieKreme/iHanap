@@ -9,6 +9,7 @@
        <table id="missing_persons_table" class="table table-hover table-condensed table-bordered" width="100%">
             <thead>
                  <tr>
+								 <td>Relative</td>
                  <td>Name</td>
                  <td>Email</td>
                  <td>Address</td>
@@ -40,6 +41,7 @@
     	{
     		$data .=
         '<tr>
+				<td class="td">'.$row["mp_relative"].'</td>
         <td class="td">'.$row["mp_firstname"].' '.$row["mp_middlename"].' '.$row["mp_lastname"].'</td>
         <td class="td">'.$row["mp_email"].'</td>
         <td class="td">'.$row["mp_house_number"].' '.$row["mp_street"].'</td>

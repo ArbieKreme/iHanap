@@ -4,6 +4,7 @@ function addRecord() {
     var mp_firstname = $("#add_mp_firstname").val();
     var mp_middlename = $("#add_mp_middlename").val();
     var mp_lastname = $("#add_mp_lastname").val();
+    var mp_relative = $("#add_mp_relative").val();
     var mp_email = $("#add_mp_email").val();
     var mp_house_number = $("#add_mp_house_number").val();
     var mp_street = $("#add_mp_street").val();
@@ -21,6 +22,7 @@ function addRecord() {
         mp_firstname: mp_firstname,
         mp_middlename: mp_middlename,
         mp_lastname: mp_lastname,
+        mp_relative: mp_relative,
         mp_email: mp_email,
         mp_house_number: mp_house_number,
         mp_street: mp_street,
@@ -43,6 +45,7 @@ function addRecord() {
         $("#add_mp_firstname").val("");
         $("#add_mp_middlename").val("");
         $("#add_mp_lastname").val("");
+        $("#add_mp_relative").val("");
         $("#add_mp_email").val("");
         $("#add_mp_house_number").val("");
         $("#add_mp_street").val("");
@@ -103,6 +106,7 @@ function GetUserDetails(missing_person_id) {
             $("#update_mp_firstname").val(user.mp_firstname);
             $("#update_mp_middlename").val(user.mp_middlename);
             $("#update_mp_lastname").val(user.mp_lastname);
+            $("#update_mp_relative").val(user.mp_relative);
             $("#update_mp_email").val(user.mp_email);
             $("#update_mp_house_number").val(user.mp_house_number);
             $("#update_mp_street").val(user.mp_street);
@@ -125,6 +129,7 @@ function UpdateUserDetails() {
     var mp_firstname = $("#update_mp_firstname").val();
     var mp_middlename = $("#update_mp_middlename").val();
     var mp_lastname = $("#update_mp_lastname").val();
+    var mp_relative = $("#update_mp_relative").val();
     var mp_email = $("#update_mp_email").val();
     var mp_house_number = $("#update_mp_house_number").val();
     var mp_street = $("#update_mp_street").val();
@@ -145,6 +150,7 @@ function UpdateUserDetails() {
       mp_firstname: mp_firstname,
       mp_middlename: mp_middlename,
       mp_lastname: mp_lastname,
+      mp_relative: mp_relative,
       mp_email: mp_email,
       mp_house_number: mp_house_number,
       mp_street: mp_street,

@@ -7,6 +7,7 @@ if(isset($_POST))
 {
     // get values
     $missing_person_id = $_POST['missing_person_id'];
+    $mp_relative = $_POST['mp_relative'];
     $mp_firstname = $_POST['mp_firstname'];
     $mp_middlename = $_POST['mp_middlename'];
     $mp_lastname = $_POST['mp_lastname'];

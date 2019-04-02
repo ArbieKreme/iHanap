@@ -1,6 +1,12 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
+<?php
+   include 'config/config.php';
+   $query="SELECT account_id, firstname, middlename, lastname from  accounts";
+   $result = mysqli_query($con,$query);
+   $menu="";
+?>
 
 <script type="text/javascript" src="js/script.js"></script>
 
@@ -32,6 +38,25 @@
                 <h4 class="modal-title" style="color:teal" id="myModalLabel">Add New Record</h4>
             </div>
             <div class="modal-body">
+
+              <div class="form-group">
+                <select class="form-control form-dropdown validate[required]" style="width:100%" id="update_mp_relative" name="update_mp_relative">
+
+                      <?php
+                     // Add options to the drop down
+                     $menu .="<option class=\"form-control\">" . "--Select Relative--" . "</option>";
+                       while($row = mysqli_fetch_assoc($result))
+                       {
+                       $menu .="
+                       <option class=\"form-control\" value=\" . $row['account_id'] . \">" . $row['firstname'] . ' ' .$row['middlename'] . ' ' . $row['lastname'] . "</option>";
+                       }
+                        // Close menu form
+                       // Output dropdown menu
+                       echo $menu;
+                    ?>
+                </select>
+              </div>
+
                 <div class="form-group">
                     <input type="text" id="add_mp_firstname" placeholder="First Name" class="form-control" required/>
                 </div>
@@ -129,6 +154,25 @@
             </div>
 
               <div class="modal-body">
+
+                <div class="form-group">
+                  <select class="form-control form-dropdown validate[required]" style="width:100%" id="update_mp_relative" name="update_mp_relative">
+
+                        <?php
+                       // Add options to the drop down
+                       $menu .="<option class=\"form-control\">" . "--Select Relative--" . "</option>";
+                         while($row = mysqli_fetch_assoc($result))
+                         {
+                         $menu .="
+                         <option class=\"form-control\">" . $row['firstname'] . ' ' .$row['middlename'] . ' ' . $row['lastname'] . "</option>";
+                         }
+                          // Close menu form
+                         // Output dropdown menu
+                         echo $menu;
+                      ?>
+                  </select>
+                </div>
+
                 <div class="form-group">
                     <input type="text" id="update_mp_firstname" placeholder="First Name" class="form-control" required/>
                 </div>
@@ -193,17 +237,6 @@
                 <div class="form-group">
                     <input type="number" id="update_mp_weight" placeholder="Weight (kg)" max="100" class="form-control" required/>
                 </div>
-
-              <!--Relative-->
-              <!--
-              <div class="form-group">
-              <label for="sel1">Select list:</label>
-              <select class="form-control" id="sel1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-              </select>-->
 
             </div>
             <div class="modal-footer">
