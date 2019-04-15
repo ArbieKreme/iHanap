@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Finder</title>
+<title>iHanap</title>
+<link rel = "icon" type = "image/png" href = "img/iHanapLogo.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -49,7 +50,7 @@
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity" style="padding:200px 20px">
+<footer class="w3-container w3-padding-64 w3-center w3-opacity" style="padding:100px 20px">
   <?php
   include 'templates/footer.php';
   ?>

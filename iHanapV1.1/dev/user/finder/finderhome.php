@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <title>iHanap</title>
-<link rel = "icon" type = "image/png" href = "../img/iHanapTitleLogo.png">
+<link rel = "icon" type = "image/png" href = "img/iHanapLogo.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,6 +28,7 @@
 <!--Defined CSS and JS-->
 <link rel="stylesheet" href="css/index-style.css" type="text/css">
 <script src="js/index-script.js"></script>
+<script src="js/script.js"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
@@ -40,6 +41,18 @@
 {color:darkgrey}
 
 #add_mp_gender{
+  color: grey;
+}
+
+#update_mp_gender{
+  color: grey;
+}
+
+#add_mp_relative{
+  color: grey;
+}
+
+#update_mp_relative{
   color: grey;
 }
 
@@ -68,34 +81,21 @@
 </div>
 
 
-<header class="w3-container w3-blue-grey w3-center" style="padding:70px 1px 240px" id="adminhome">
+<!-- Header -->
+<header class="w3-container w3-blue-grey w3-center" style="padding:80px 1px 10%" id="adminhome">
   <?php
   include 'adminhome.php';
   ?>
 </header>
 
-
-<header class="w3-row-padding w3-container" style="padding:15% 20px" id="adminopen">
-  <?php
-  include 'adminopen.php';
-  ?>
-</header>
-
-
-<header class="w3-row-padding w3-light-grey w3-container" style="padding:15% 20px" id="adminclose">
-  <?php
-  include 'adminclose.php';
-  ?>
-</header>
-
-<div class="w3-container w3-black w3-center w3-opacity w3-padding-64" style="padding:15% 20px">
+<div class="w3-container w3-black w3-center w3-opacity" style="padding:200px 20px">
   <?php
   include 'quote.php';
   ?>
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity" style="padding:200px 20px">
+<footer class="w3-container w3-center w3-opacity" style="padding:100px 20px">
   <?php
   include 'templates/footer.php';
   ?>
