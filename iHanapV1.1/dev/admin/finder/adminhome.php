@@ -1,14 +1,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-<?php
-   include 'config/config.php';
-   $query="SELECT account_id, firstname, middlename, lastname from  accounts";
-   $result = mysqli_query($con,$query);
-   $menu="";
-?>
-
-<script type="text/javascript" src="js/script.js"></script>
+<script src="js/script.js"></script>
 
               <div class="container">
                   <div class="row">
@@ -40,22 +32,26 @@
             <div class="modal-body">
 
               <div class="form-group">
-                <select class="form-control form-dropdown validate[required]" style="width:100%" id="update_mp_relative" name="update_mp_relative">
+              <input id="uploadImage" type="file" accept="image/*" name="image" />
+              <div id="preview"><img src="img/filed.png" height="100px" width="100px"/></div><br>
+              <input class="btn btn-success" type="submit" value="Upload">
+              </div>  
 
-                      <?php
-                     // Add options to the drop down
-                     $menu .="<option class=\"form-control\">" . "--Select Relative--" . "</option>";
-                       while($row = mysqli_fetch_assoc($result))
-                       {
-                       $menu .="
-                       <option class=\"form-control\" value=\" . $row['account_id'] . \">" . $row['firstname'] . ' ' .$row['middlename'] . ' ' . $row['lastname'] . "</option>";
-                       }
-                        // Close menu form
-                       // Output dropdown menu
-                       echo $menu;
-                    ?>
+                <div class="form-group">
+                  <select class="form-dropdown form-control" style="width:100%" id="add_mp_relative" name="add_mp_relative">
+                    <option style="color:grey">--Select Relative--</option>
+                 <?php
+                   include '../config/config.php';
+                   $sql="SELECT firstname, middlename, lastname from  accounts";
+                   $result = mysqli_query($con,$sql);
+                    $menu=" ";
+                     while($row =mysqli_fetch_assoc($result))
+                     {$menu .="<option style=\"color:grey\" value=\"" . $row['firstname'] . " " . $row['middlename'] . " " . $row['lastname'] . "\">" . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . "</option>";
+                     }
+                     echo $menu;
+                  ?>
                 </select>
-              </div>
+                </div>
 
                 <div class="form-group">
                     <input type="text" id="add_mp_firstname" placeholder="First Name" class="form-control" required/>
@@ -67,10 +63,6 @@
 
                 <div class="form-group">
                     <input type="text" id="add_mp_lastname" placeholder="Last Name" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="email" id="add_mp_email" placeholder="Email Address" class="form-control" required/>
                 </div>
 
                 <div class="form-group">
@@ -89,6 +81,7 @@
                     <input type="text" id="add_mp_nativity" placeholder="Nativity" class="form-control" required/>
                 </div>
 
+
                 <div class="form-group">
                     <input type="number" id="add_mp_age" placeholder="Age" max="100" class="form-control" required/>
                 </div>
@@ -97,17 +90,16 @@
                   <input class="form-control" id="add_mp_last_seen" name="date" placeholder="MM/DD/YYY (Last Seen)" type="text" required/>
                 </div>
 
-                <div class="form-group" style="text-align:left;" for="add_mp_status">
-                  <select id="add_mp_status">
-                   <option value="Open">Open</option>
-                   <option value="In Progress">In Progress</option>
-                   <option value="Resolved">Resolved</option>
-                   <option value="Closed">Closed</option>
-                  </select>
+                <div class="form-group">
+                    <input type="text" id="add_mp_top_clothing" placeholder="Top Clothing" class="form-control" required/>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="add_mp_bottom_clothing" placeholder="Bottom Clothing" class="form-control" required/>
                 </div>
 
                 <div class="form-group" style="text-align:left;" for="add_mp_gender">
-                  <select id="add_mp_gender">
+                  <select id="add_mp_gender" class="form-control">
                    <option value="">--Gender--</option>
                    <option value="Male">Male</option>
                    <option value="Female">Female</option>
@@ -122,18 +114,11 @@
                     <input type="number" id="add_mp_weight" placeholder="Weight (kg)" max="100" class="form-control" required/>
                 </div>
 
-                <!--Relative-->
-                <!--
                 <div class="form-group">
-                <label for="sel1">Select list:</label>
-                <select class="form-control" id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>-->
-</div>
+                <textarea type="text" id="add_mp_remarks" placeholder="Remarks" class="form-control"></textarea>
+                </div>
 
+              </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -141,112 +126,140 @@
             </div>
         </div>
     </div>
-</div>
 <!-- // Modal -->
 
 <!-- Modal - Update User details -->
 <div class="modal fade" id="update_user_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title" id="myModalLabel" style="color:teal">Update</h4>
+      <div class="modal-content">
+          <div class="modal-header">
+            <label>Update Missing Person</label>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" style="color:teal" id="myModalLabel">Update New Record</h4>
+          </div>
+          <div class="modal-body">
+
+              <div class="form-group">
+                <select class="form-dropdown form-control" style="width:100%" id="update_mp_relative" name="update_mp_relative">
+                  <option style="color:grey">--Select Relative--</option>
+               <?php
+                 include '../config/config.php';
+                 $sql="SELECT firstname, middlename, lastname from  accounts";
+                 $result = mysqli_query($con,$sql);
+                  $menu=" ";
+                   while($row =mysqli_fetch_assoc($result))
+                   {$menu .="<option style=\"color:grey\" value=\"" . $row['firstname'] . " " . $row['middlename'] . " " . $row['lastname'] . "\">" . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . "</option>";
+                   }
+                   echo $menu;
+                ?>
+              </select>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="update_mp_firstname" placeholder="First Name" class="form-control" required/>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="update_mp_middlename" placeholder="Middle Name" class="form-control" required/>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="update_mp_lastname" placeholder="Last Name" class="form-control" required/>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="update_mp_house_number" placeholder="House Number" class="form-control" required/>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="update_mp_street" placeholder="Street" class="form-control" required/>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="update_mp_city" placeholder="City" class="form-control" required/>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="update_mp_nativity" placeholder="Nativity" class="form-control" required/>
+              </div>
+
+
+              <div class="form-group">
+                  <input type="number" id="update_mp_age" placeholder="Age" max="100" class="form-control" required/>
+              </div>
+
+              <div class="form-group"> <!-- Date input -->
+                <input class="form-control" id="update_mp_last_seen" name="date" placeholder="MM/DD/YYY (Last Seen)" type="text" required/>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="update_mp_top_clothing" placeholder="Top Clothing" class="form-control" required/>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="update_mp_bottom_clothing" placeholder="Bottom Clothing" class="form-control" required/>
+              </div>
+
+              <div class="form-group" style="text-align:left;" for="update_mp_gender">
+                <select id="update_mp_gender" class="form-control">
+                 <option value="">--Gender--</option>
+                 <option value="Male">Male</option>
+                 <option value="Female">Female</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                  <input type="number" id="update_mp_height" placeholder="Height (cm)" max="100" class="form-control" required/>
+              </div>
+
+              <div class="form-group">
+                  <input type="number" id="update_mp_weight" placeholder="Weight (kg)" max="100" class="form-control" required/>
+              </div>
+
+              <div class="form-group" style="text-align:left;" for="update_mp_status">
+                <select id="update_mp_status" class="form-control">
+                 <option value="">--Status--</option>
+                 <option value="Open">Open</option>
+                 <option value="In Progress">In Progress</option>
+                 <option value="Close">Close</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="text-align:left;" for="update_mp_tag">
+                <select id="update_mp_tag" class="form-control">
+                 <option value="">--Tag--</option>
+                 <option value="Missing">Missing</option>
+                 <option value="Allegedly Found">Allegedly Found</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+              <textarea type="text" id="update_mp_remarks" placeholder="Remarks" class="form-control"></textarea>
+              </div>
+
             </div>
-
-              <div class="modal-body">
-
-                <div class="form-group">
-                  <select class="form-control form-dropdown validate[required]" style="width:100%" id="update_mp_relative" name="update_mp_relative">
-
-                        <?php
-                       // Add options to the drop down
-                       $menu .="<option class=\"form-control\">" . "--Select Relative--" . "</option>";
-                         while($row = mysqli_fetch_assoc($result))
-                         {
-                         $menu .="
-                         <option class=\"form-control\">" . $row['firstname'] . ' ' .$row['middlename'] . ' ' . $row['lastname'] . "</option>";
-                         }
-                          // Close menu form
-                         // Output dropdown menu
-                         echo $menu;
-                      ?>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" id="update_mp_firstname" placeholder="First Name" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" id="update_mp_middlename" placeholder="Middle Name" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" id="update_mp_lastname" placeholder="Last Name" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="email" id="update_mp_email" placeholder="Email Address" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" id="update_mp_house_number" placeholder="House Number" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" id="update_mp_street" placeholder="Street" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" id="update_mp_city" placeholder="City" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" id="update_mp_nativity" placeholder="Nativity" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="number" id="update_mp_age" placeholder="Age" max="100" class="form-control" required/>
-                </div>
-
-                <div class="form-group"> <!-- Date input -->
-                  <input class="form-control" id="update_mp_last_seen" name="date" placeholder="MM/DD/YYY (Last Seen)" type="text" required/>
-                </div>
-
-                <div class="form-group" style="text-align:left;" for="update_mp_status">
-                  <select id="update_mp_status">
-                   <option value="Open">Open</option>
-                   <option value="In Progress">In Progress</option>
-                   <option value="Resolved">Resolved</option>
-                   <option value="Closed">Closed</option>
-                  </select>
-                </div>
-
-                <div class="form-group" style="text-align:left;" for="update_mp_gender">
-                  <select id="update_mp_gender">
-                   <option value="">--Gender--</option>
-                   <option value="Male">Male</option>
-                   <option value="Female">Female</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                    <input type="number" id="update_mp_height" placeholder="Height (cm)" max="100" class="form-control" required/>
-                </div>
-
-                <div class="form-group">
-                    <input type="number" id="update_mp_weight" placeholder="Weight (kg)" max="100" class="form-control" required/>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" onclick="UpdateUserDetails()" >Save Changes</button>
-                <input type="hidden" id="hidden_user_missing_person_id">
-            </div>
-        </div>
+          </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="UpdateUserDetails()" >Save Changes</button>
+        <input type="hidden" id="hidden_user_missing_person_id">
     </div>
 </div>
+</div>
 
+<script>
+    $(document).ready(function(){
+      $('#missing_persons_table').DataTable();
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+      readRecords(); // calling function
+    });
+</script>
 </body>
-</html>

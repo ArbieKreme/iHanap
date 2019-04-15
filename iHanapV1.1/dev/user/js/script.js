@@ -1,4 +1,5 @@
-zz
+
+// Add Record
 function addRecord() {
     // get values
     var mp_firstname = $("#add_mp_firstname").val();
@@ -47,8 +48,6 @@ function addRecord() {
 
         // read records again
         readRecords();
-        readOpenRecords();
-        readClosedRecords();
 
         $("#add_mp_firstname").val("");
         $("#add_mp_middlename").val("");
@@ -78,18 +77,6 @@ function readRecords() {
     });
 }
 
-function readOpenRecords() {
-    $.get("ajax/readOpenRecords.php", {}, function (data, status) {
-        $(".openRecords_content").html(data);
-    });
-}
-
-function readClosedRecords() {
-    $.get("ajax/readClosedRecords.php", {}, function (data, status) {
-        $(".closedRecords_content").html(data);
-    });
-}
-
 
 function DeleteUser(missing_person_id) {
     var conf = confirm("Are you sure, do you really want to delete report?");
@@ -99,8 +86,6 @@ function DeleteUser(missing_person_id) {
             function (data, status) {
                 // reload Users by using readRecords();
                 readRecords();
-                readOpenRecords();
-                readClosedRecords();
             }
         );
     }
@@ -133,8 +118,6 @@ function GetUserDetails(missing_person_id) {
             $("#update_mp_gender").val(user.mp_gender);
             $("#update_mp_height").val(user.mp_height);
             $("#update_mp_weight").val(user.mp_weight);
-            $("#update_mp_status").val(user.mp_status);
-            $("#update_mp_tag").val(user.mp_tag);
             //$("#update_mp_photo").val(user.mp_photo);
         }
     );
@@ -161,8 +144,6 @@ function UpdateUserDetails() {
     var mp_gender = $("#update_mp_gender").val();
     var mp_height = $("#update_mp_height").val();
     var mp_weight = $("#update_mp_weight").val();
-    var mp_status = $("#update_mp_status").val();
-    var mp_tag= $("#update_mp_tag").val();
     //var mp_photo = $("#update_mp_photo").val();
 
     var missing_person_id = $("#hidden_user_missing_person_id").val();
@@ -187,8 +168,6 @@ function UpdateUserDetails() {
       mp_gender: mp_gender,
       mp_height: mp_height,
       mp_weight: mp_weight,
-      mp_status: mp_status,
-      mp_tag: mp_tag
       //mp_photo: mp_photo
         },
         function (data, status) {
@@ -196,8 +175,6 @@ function UpdateUserDetails() {
             $("#update_user_modal").modal("hide");
             // reload Users by using readRecords();
             readRecords();
-            readOpenRecords();
-            readClosedRecords();
         }
     );
 }

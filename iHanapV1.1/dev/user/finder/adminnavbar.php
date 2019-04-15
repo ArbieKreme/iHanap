@@ -15,8 +15,8 @@ $created_at = $_SESSION["created_at"];
 
 <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-white" href="javascript:void(0);" onclick="toggleMenu()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="finderhome.php#adminhome" id="home" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
-    <a href="finderhome.php#adminopen" id="open" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Open</a>
-    <a href="finderhome.php#adminclose" id="close" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Close</a>
+    <a href="finderhome.php#adminopen" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Open</a>
+    <a href="finderhome.php#adminclose" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Close</a>
 
     <div class="w3-bar-item w3-padding-small w3-dropdown-hover w3-teal">
       <button class="w3-button w3-hide-small w3-hover-white"><?php echo $email;?></button>

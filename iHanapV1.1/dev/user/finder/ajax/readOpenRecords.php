@@ -23,7 +23,7 @@
               </tr>
          </thead>';
 
-	$query = "SELECT * FROM missingpersons
+	$query = "SELECT * FROM missingpersons WHERE mp_status = 'Open'
 ";
 
 	if (!$result = mysqli_query($con, $query)) {

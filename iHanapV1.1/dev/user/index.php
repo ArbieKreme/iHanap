@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <title>iHanap</title>
-<link rel = "icon" type = "image/png" href = "img/iHanapTitleLogo.png">
+<link rel = "icon" type = "image/png" href = "img/iHanapLogo.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -41,11 +41,12 @@
 </div>
 
 <!-- Header -->
-<header class="w3-container w3-blue-grey w3-center" style="padding:10% 1px 10%" id="home">
+<header class="w3-container w3-blue-grey w3-center" style="padding:80px 1px 10%" id="home">
   <?php
   include 'home.php';
   ?>
 </header>
+
 
 <!-- Login Modal-->
 
@@ -55,8 +56,15 @@
   ?>
 </div>
 
+
+<div id="signupModal" class="modal">
+  <?php
+  include 'signup.php';
+  ?>
+</div>
+
 <!-- First Grid -->
-<div class="w3-row-padding w3-container" background="" style="padding:15% 20px" id="aboutfinder">
+<div class="w3-row-padding w3-container" style="padding:10% 20px" id="aboutfinder">
   <?php
   include 'aboutfinder.php';
   ?>
@@ -76,7 +84,7 @@
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-center w3-opacity" style="padding:200px 20px">
+<footer class="w3-container w3-center w3-opacity" style="padding:100px 20px">
   <?php
   include 'templates/footer.php';
   ?>

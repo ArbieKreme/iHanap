@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="css/login-signup-style.css" type="text/css">
-
+<script src="js/jquery-3.3.1.js"></script>
 <span onclick="document.getElementById('signupModal').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content" method="POST" action="signupaction.php"
    method="post">
@@ -30,12 +30,12 @@
 
       <div class="form-group">
       <label for="email"><b>Email</b></label>
-      <input type="email" name="email">
+      <input type="email" name="email" class="email">
       </div>
 
       <div class="form-group">
       <label for="contact_number"><b>Contact Number</b></label>
-      <input type="tel" name="contact_number" value="+63" pattern="[+63]{3}[0-9]{3}[0-9]{3}[0-9]{4}" required>
+      <input type="tel" name="contact_number" value="+63" pattern="[+63]{3}[0-9]{3}[0-9]{3}[0-9]{4}" class="contact_number" required>
       </div>
 
       <div class="form-group">
