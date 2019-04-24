@@ -28,7 +28,6 @@
 <!--Defined CSS and JS-->
 <link rel="stylesheet" href="css/index-style.css" type="text/css">
 <script src="js/index-script.js"></script>
-<script src="js/script.js"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
@@ -37,7 +36,10 @@
   body,h1,h2,h3,h4,h5,h6
 {font-family: "Lato", sans-serif}
 
-.td
+td
+{color:darkgrey}
+
+#imageModal
 {color:darkgrey}
 
 #add_mp_gender{
@@ -82,7 +84,7 @@
 
 
 <!-- Header -->
-<header class="w3-container w3-blue-grey w3-center" style="padding:80px 1px 10%" id="adminhome">
+<header class="w3-container w3-blue-grey w3-center" style="padding:10px 0px 10%" id="adminhome">
   <?php
   include 'adminhome.php';
   ?>
@@ -91,14 +93,14 @@
 <!-- First Grid -->
 <div class="w3-row-padding w3-container" style="padding:15% 20px" id="adminopen">
   <?php
-  include 'adminopen.php';
+  //include 'adminopen.php';
   ?>
 </div>
 
 <!-- Second Grid -->
-<div class="w3-row-padding w3-light-grey w3-container" style="padding:8% 20px" id="adminclose">
+<div class="w3-row-padding w3-light-grey w3-container" style="padding:15% 20px" id="adminclose">
   <?php
-  include 'adminclose.php';
+  //include 'adminclose.php';
   ?>
 </div>
 
@@ -116,4 +118,15 @@
 </footer>
 
 </body>
+<script>
+var date_input=$('input[name="date"]'); //our date input has the name "date"
+var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+var options={
+  format: 'mm/dd/yyyy',
+  container: container,
+  todayHighlight: true,
+  autoclose: true,
+};
+date_input.datepicker(options);
+</script>
 </html>
