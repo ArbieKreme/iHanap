@@ -45,9 +45,9 @@ $filtered_rows = $statement->rowCount();
 foreach($result as $row)
 {
  $image = '';
- if($row["image"] != '')
+ if($row["mp_photo"] != '')
  {
-  $image = '<img src="upload/'.$row["image"].'" class="img-thumbnail" width="100" height="85" />';
+  $image = '<img src="upload/'.$row["mp_photo"].'" class="img-thumbnail" width="100" height="85" />';
  }
  else
  {
@@ -55,24 +55,16 @@ foreach($result as $row)
  }
  $sub_array = array();
  $sub_array[] = $image;
- $sub_array[] = $row["mp_firstname"];
- $sub_array[] = $row["mp_middlename"];
- $sub_array[] = $row["mp_lastname"];
+ $sub_array[] = $row["mp_firstname"]. ' ' .$row["mp_middlename"]. '' .$row["mp_lastname"];
  $sub_array[] = $row["mp_relative"];
- $sub_array[] = $row["mp_house_number"];
- $sub_array[] = $row["mp_street"];
- $sub_array[] = $row["mp_city"];
- $sub_array[] = $row["mp_nativity"];
- $sub_array[] = $row["mp_age"];
- $sub_array[] = $row["mp_remarks"];
- $sub_array[] = $row["mp_last_seen"];
- $sub_array[] = $row["mp_top_clothing"];
- $sub_array[] = $row["mp_bottom_clothing"];
- $sub_array[] = $row["mp_gender"];
- $sub_array[] = $row["mp_height"];
- $sub_array[] = $row["mp_weight"];
  $sub_array[] = $row["mp_status"];
  $sub_array[] = $row["mp_tag"];
+ $sub_array[] = $row["mp_house_number"]. ' ' .$row["mp_street"]. ' ' .$row["mp_city"];
+ $sub_array[] = $row["mp_nativity"];
+ $sub_array[] = $row["mp_age"];
+ $sub_array[] = $row["mp_gender"];
+
+
  $sub_array[] = '<button type="button" name="update" id="'.$row["missing_person_id"].'" class="btn btn-warning btn-xs update">Update</button>';
  $sub_array[] = '<button type="button" name="delete" id="'.$row["missing_person_id"].'" class="btn btn-danger btn-xs delete">Delete</button>';
  $data[] = $sub_array;

@@ -75,10 +75,24 @@ if(isset($_POST["operation"]))
   );
   $result = $statement->execute(
    array(
-    ':first_name' => $_POST["first_name"],
-    ':last_name' => $_POST["last_name"],
+    ':mp_firstname' => $_POST["mp_firstname"],
+    ':mp_middlename' => $_POST["mp_middlename"],
+    ':mp_lastname' => $_POST["mp_lastname"],
+    ':mp_relative' => $_POST["mp_relative"],
+    ':mp_house_number' => $_POST["mp_house_number"],
+    ':mp_street' => $_POST["mp_street"],
+    ':mp_city' => $_POST["mp_city"],
+    ':mp_nativity' => $_POST["mp_nativity"],
+    ':mp_age' => $_POST["mp_age"],
+    ':mp_remarks' => $_POST["mp_remarks"],
+    ':mp_last_seen' => $_POST["mp_last_seen"],
+    ':mp_top_clothing' => $_POST["mp_top_clothing"],
+    ':mp_bottom_clothing' => $_POST["mp_bottom_clothing"],
+    ':mp_gender' => $_POST["mp_gender"],
+    ':mp_height' => $_POST["mp_height"],
+    ':mp_weight' => $_POST["mp_weight"],
     ':image'  => $image,
-    ':id'   => $_POST["user_id"]
+    ':missing_person_id'   => $_POST["missing_person_id"]
    )
   );
   if(!empty($result))

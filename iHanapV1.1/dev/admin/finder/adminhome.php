@@ -196,6 +196,22 @@ if(mp_photo != '')
  {
   alert("Invalid Image File");
   $('#user_image').val('');
+  $("#add_mp_firstname").val('');
+  $("#add_mp_middlename").val('');
+  $("#add_mp_lastname").val('');
+  $("#add_mp_relative").val('');
+  $("#add_mp_house_number").val('');
+  $("#add_mp_street").val('');
+  $("#add_mp_city").val('');
+  $("#add_mp_nativity").val('');
+  $("#add_mp_age").val('');
+  $("#add_mp_remarks").val('');
+  $("#add_mp_last_seen").val('');
+  $("#add_mp_top_clothing").val('');
+  $("#add_mp_bottom_clothing").val('');
+  $("#add_mp_gender").val('');
+  $("#add_mp_height").val('');
+  $("#add_mp_weight").val('');
   return false;
  }
 }
