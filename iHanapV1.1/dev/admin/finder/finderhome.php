@@ -84,7 +84,7 @@ td
 
 
 <!-- Header -->
-<header class="w3-container w3-blue-grey w3-center" style="padding:10px 0px 10%" id="adminhome">
+<header class="w3-container w3-blue-grey w3-center" style="padding:50px 0px 10%" id="adminhome">
   <?php
   include 'adminhome.php';
   ?>
