@@ -1,3 +1,4 @@
+zz
 function addRecord() {
     // get values
     var mp_firstname = $("#add_mp_firstname").val();

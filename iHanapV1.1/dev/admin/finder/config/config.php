@@ -1,7 +1,8 @@
 <?php
+$con = mysqli_connect("localhost","root","","finderdb");
 
-$username = 'root';
-$password = '';
-$connection = new PDO( 'mysql:host=localhost;dbname=finderdb', $username, $password );
-
+if(!$con)
+{
+	echo "Database connection failed...";
+}
 ?>

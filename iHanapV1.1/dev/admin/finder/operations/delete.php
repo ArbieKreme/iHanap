@@ -1,6 +1,6 @@
 <?php
 
-include('../config/config.php');
+include('db.php');
 include("function.php");
 
 if(isset($_POST["missing_person_id"]))
@@ -8,10 +8,10 @@ if(isset($_POST["missing_person_id"]))
  $image = get_image_name($_POST["missing_person_id"]);
  if($image != '')
  {
-  unlink("../upload/" . $image);
+  unlink("../uploads/" . $image);
  }
  $statement = $connection->prepare(
-  "DELETE FROM missingpersons WHERE missing_person_id = :missing_person_id"
+  "DELETE FROM users WHERE id = :id"
  );
  $result = $statement->execute(
   array(
@@ -24,7 +24,4 @@ if(isset($_POST["missing_person_id"]))
   echo 'Data Deleted';
  }
 }
-
-
-
 ?>
